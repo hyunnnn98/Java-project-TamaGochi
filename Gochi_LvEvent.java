@@ -1,12 +1,18 @@
 package Gochi;
-//quiz¶û lvevent ¸Ş¼­µå Á¤¸®ÇØ¾ßÇÔ
+
+/*
+ * ì¼ì •ë ˆë²¨ ë‹¬ì„± ì‹œ, ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸(í€´ì¦ˆ, ê¸°ë³¸ status ê°ì†Œ)ë¥¼ ì„¤ì •
+*/
+
 public class Gochi_LvEvent extends Main_Gochi {
 
 	static int c_LvHealth	= 0;
 	static int answer		= 0;
 
+	//Gochi_LvEventì˜ ì£¼ì‹¤í–‰ ë©”ì„œë“œ
 	void LvEvent() {
 
+		//ìºë¦­í„° Levelì´ 3,6,9ê°€ ë  ê²½ìš°, c_LvHealth ì¦ê°€ìˆ˜ì¹˜ê°€ ê°ì†Œë¨
 		switch(Gochi_Status.c_Level) {
 		case 3:		c_LvHealth = 1;		break;
 		case 6:		c_LvHealth = 2;		break;
@@ -14,24 +20,28 @@ public class Gochi_LvEvent extends Main_Gochi {
 		default:						break;						
 		}
 
+		//ìºë¦­í„° Levelì´ 3,6,9ê°€ ë  ê²½ìš°, Eventì‹¤í–‰ ì—¬ë¶€ë¥¼ ì„ íƒ
 		if(Gochi_Status.c_Level == 3 || Gochi_Status.c_Level == 6 || Gochi_Status.c_Level == 9) {
 			if(Gochi_Status.Lv_Case / 100 > 0) {
 				
 				Gochi_Status.Lv_Case = 0;
-				System.out.println("\n¡Ú¡Ú¡Ú¡Ú¡ÚÃà Lv. " + Gochi_Status.c_Level + " ´Ş¼º¡Ú¡Ú¡Ú¡Ú¡Ú");
-				System.out.print("Event°¡ ¹ß»ıÇß½À´Ï´Ù. Quiz¸¦ ½ÇÇàÇÏ°Ú½À´Ï±î? ¿¹(1) ¾Æ´Ï¿À(2) ");
+				
+				System.out.println("\nâ˜…â˜…â˜…â˜…â˜…ì¶• Lv. " + Gochi_Status.c_Level + " ë‹¬ì„±â˜…â˜…â˜…â˜…â˜…");
+				System.out.print("Eventê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤. Quizë¥¼ ì‹¤í–‰í•˜ê² ìŠµë‹ˆê¹Œ? ì˜ˆ(1) ì•„ë‹ˆì˜¤(2) ");
 				int choice = scan.nextInt();
 
+				//ì˜ˆ(1)ë¥¼ ì„ íƒí•  ê²½ìš°, Quizë¥¼ ì‹¤í–‰
 				if(choice == 1)		Quiz();
 			}
 		}
 
 	}
 
+	//Quizë¥¼ ì‹¤í–‰
 	void Quiz() {
 		switch(Gochi_Status.c_Level) {
 		case 3:
-			System.out.println("³Í¼¾½º ¹®Á¦ : ¹İ¼º¹®À» ¿µ¾î·Î ÇÏ¸é?");
+			System.out.println("ë„Œì„¼ìŠ¤ ë¬¸ì œ : ë°˜ì„±ë¬¸ì„ ì˜ì–´ë¡œ í•˜ë©´?");
 			System.out.println("(1) global\t(2) Half Castle Door\t(3) Actor Sorry.Moon");
 
 			input_Answer();
@@ -41,7 +51,7 @@ public class Gochi_LvEvent extends Main_Gochi {
 
 			break;
 		case 6:
-			System.out.println("JAVA ¹®Á¦ : »ı¼ºÀÚ¸¦ ºÒ·¯¿À´Â ¿¹¾à¾î´Â?");
+			System.out.println("JAVA ë¬¸ì œ : ìƒì„±ìë¥¼ ë¶ˆëŸ¬ì˜¤ëŠ” ì˜ˆì•½ì–´ëŠ”?");
 			System.out.println("(1) void\t(2) new\t(3) scanner");
 
 			input_Answer();
@@ -51,8 +61,8 @@ public class Gochi_LvEvent extends Main_Gochi {
 
 			break;
 		case 9:
-			System.out.println("³Í¼¾½º ¹®Á¦ : ¹İ¼º¹®À» ¿µ¾î·Î ÇÏ¸é ?");
-			System.out.println("(1) global\t(2) Half Castle Door\t(3) Actor Sorry.Moon");
+			System.out.println("æ—¥æœ¬èªã®å•é¡Œ : ã€Œç€¬æˆ¸å†…ã€ã®èª­ã¿æ–¹ã¯?");
+			System.out.println("(1) ã›ã¨ãªã„\t(2) ã›ã¨ãªã‹\t(3) ã›ã¨ã†ã¡");
 
 			input_Answer();
 
@@ -62,15 +72,17 @@ public class Gochi_LvEvent extends Main_Gochi {
 			break;
 		}
 	}
-
+	
+	//ì •ë‹µì„ answer ì— ì…ë ¥ ë°›ëŠ” ë©”ì„œë“œ
 	void input_Answer() {
-		System.out.println(Gochi_Name.name + " ÀÇ ¼±ÅÃÀº??? > ");
+		System.out.println(Gochi_Name.name + " ì˜ ì„ íƒì€??? > ");
 		answer = scan.nextInt();
 	}
 
+	//ì •ë‹µì„ ë§ì¶œ ê²½ìš°, ëª¨ë“  statusë¥¼ 50ìœ¼ë¡œ ì´ˆê¸°í™”
 	void answer_True() {
-		System.out.println("Á¤´äÀÔ´Ï´Ù!!!");
-		System.out.println("±âº» ´É·ÂÄ¡°¡ Áõ°¡µË´Ï´Ù.");
+		System.out.println("ì •ë‹µì…ë‹ˆë‹¤!!!");
+		System.out.println("ê¸°ë³¸ ëŠ¥ë ¥ì¹˜ê°€ ì¦ê°€ë©ë‹ˆë‹¤.");
 
 		Gochi_Status.s_Clean	= 50;
 		Gochi_Status.s_Tired	= 50;
@@ -78,9 +90,11 @@ public class Gochi_LvEvent extends Main_Gochi {
 		Gochi_Status.s_Health	= 50;
 		Gochi_Status.s_Dung		= 50;
 	}
+	
+	//ì •ë‹µì„ í‹€ë¦´ ê²½ìš°, ëª¨ë“  statusë¥¼ 30ìœ¼ë¡œ ì´ˆê¸°í™”
 	void answer_False() {
-		System.out.println("Æ²·È½À´Ï´Ù!!!");
-		System.out.println("±âº» ´É·ÂÄ¡°¡ °¨¼ÒµË´Ï´Ù.");
+		System.out.println("í‹€ë ¸ìŠµë‹ˆë‹¤!!!");
+		System.out.println("ê¸°ë³¸ ëŠ¥ë ¥ì¹˜ê°€ ê°ì†Œë©ë‹ˆë‹¤.");
 
 		Gochi_Status.s_Clean	= 30;
 		Gochi_Status.s_Tired	= 30;

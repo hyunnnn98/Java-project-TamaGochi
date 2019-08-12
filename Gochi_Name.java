@@ -1,5 +1,7 @@
 package Gochi;
 
+//캐릭터의 이름을 입력 받음
+
 public class Gochi_Name extends Main_Gochi{
 	
 	static String name = "";

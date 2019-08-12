@@ -2,18 +2,44 @@ package Gochi;
 
 import java.util.Scanner;
 
+/* Kind of class
+	<Major class>
+		- Main_Gochi
+		- Gochi_Start
+		- Gochi_Name
+		- Gochi_Status
+		- Gochi_Choice
+		- Gochi_Ending
+	<Sub class>
+		- Gochi_LvEvent
+		- Gochi_Limit
+		- Gochi_Weather
+		- Gochi_Function
+		- Gochi_Game
+*/
+
 public class Main_Gochi {
 	
 	public static Scanner scan = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		Gochi_Start Start			= new Gochi_Start();	// 시작 문구를 출력, 게임 시작 선택
-		Gochi_Name Name				= new Gochi_Name();		// 캐릭터 이름을 입력
-		Gochi_Status Status			= new Gochi_Status();	// 캐릭터의 Name, Day, Status를 출력
-		Gochi_Choice Choice			= new Gochi_Choice();	// 캐릭터의 활동 Function을 Choice
-//		Gochi_Function Function		= new Gochi_Function();	// Function에 따른 Status, Day, Weather를 변경
-		Gochi_Ending Ending			= new Gochi_Ending();	// 캐릭터 사망 시, Ending 출력
 		
+		//Select game start
+		Gochi_Start Start			= new Gochi_Start();
+		
+		//Input character name
+		Gochi_Name Name				= new Gochi_Name();
+		
+		//Output character name, day, status
+		Gochi_Status Status			= new Gochi_Status();
+		
+		//Select character action
+		Gochi_Choice Choice			= new Gochi_Choice();
+
+		//If character die output ending
+		Gochi_Ending Ending			= new Gochi_Ending();
+		
+		//If choice '7' restart game 
 		do {
 			Start.Start();
 			Name.Name();

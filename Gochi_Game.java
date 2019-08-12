@@ -1,13 +1,19 @@
 package Gochi;
 
+/*
+ * Gochi_Choice에서 게임을 실행할 경우, random으로 게임을 실행하고, 게임 결과를 출력
+*/
+
 public class Gochi_Game extends Main_Gochi {
 	
+	//게임이 이길 경우와 졌을 경우, status 변화를 다르게 하기 위한 변수
 	static int result_Game = 1;
 	
 	void Game() {
 		int random_Game = (int)((Math.random())*2)+1;
 		
 		switch(random_Game) {
+		//가위바위보 게임
 		case 1:
 			int user, com;
 			for(;;) {
@@ -39,7 +45,8 @@ public class Gochi_Game extends Main_Gochi {
 				break;
 			}
 			break;
-
+		
+		//숫자맞추기 게임
 		case 2:
 			System.out.print("숫자맞추기 게임에 오신것을 환영합니다. \n"
 							+"총 기회가 3번 주어집니다. \n"

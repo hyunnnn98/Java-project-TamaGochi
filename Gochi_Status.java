@@ -1,25 +1,32 @@
 package Gochi;
 
-public class Gochi_Status extends Main_Gochi{
+//  게임을 시작했을 때 캐릭터의 status의 초기값을 설정해주고 출력창에 표시를 해주기 위한 클래스 
+//	캐릭터의 status는 Gochi_Choice가 끝났을 시 항상 출력해준다.
+// 	레벨업을 했을 시에 초기값을 설정을 해줌
 
-	Gochi_Weather Weather		= new Gochi_Weather();
+public class Gochi_Status extends Main_Gochi{
+	
+	Gochi_Weather WeatherInfo	= new Gochi_Weather();
 	Gochi_LvEvent LvEvent 		= new Gochi_LvEvent();
 	
-	static int s_Clean	= 50;
-	static int s_Tired	= 50;
-	static int s_Full	= 50;
-	static int s_Health	= 50;
-	static int s_Dung	= 50;
-	static int Lv_Case	= 0;
 	//status의 초기화 값 50 저장
 	//캐릭터의 status 변수(청결, 피로, 포만감, 건강, 용변)
-
-	static int c_Level = 1;
-
+	static int c_Level		= 1;
+	static int s_Clean		= 50;
+	static int s_Tired		= 50;
+	static int s_Full		= 50;
+	static int s_Health		= 50;
+	static int s_Dung		= 50;
+	static int Lv_Case		= 0;
+	
+	//Status을 콘솔창에 나타내기 위한 메서드
 	void Status() {
-
+		
+		// 건강이 100이상 일 시 레벨이 증가하고 Status을 초기화 해줌
 		if(s_Health / 100 > 0 ) {
-			Lv_Case = s_Health;
+			
+			// Gochi_LvEvent class에서 LvEvent라는 메서드를 실행 시킬 때 한번만 실행 시키기위해 만들어 놓은 브레이크변수
+			Lv_Case	= s_Health;
 			c_Level++;
 			s_Clean		= 40;
 			s_Tired		= 40;
@@ -28,15 +35,16 @@ public class Gochi_Status extends Main_Gochi{
 			s_Dung		= 40;
 		}
 
-		//레벨이 3, 6, 9가 달성했을 때 레벨 조건 확인 및 이벤트 발생 메서드 호출
-		LvEvent.LvEvent(); 	
+//		3, 6, 9 도달 시 LvEvent메서드 실행
+		LvEvent.LvEvent();
 		
 		System.out.println("\n***********************************************");
 		System.out.print("* 이름 : 귀요미 " + Gochi_Name.name + "\tlevel : " + c_Level
-						+ "\n*" + Gochi_Choice.s_Day + "일차\t");
-		Weather.Weather();
-		//이름, 일자, 날씨 출력
-		char o = '■', x = '□';	//status 칸 표시
+						+ "\n*" + Gochi_Choice.s_Day + "일차\t" + WeatherInfo.getTodaysWeather());
+		
+		// status 칸 표시
+		// Ex) 청결 수치가 50일 때 ■■■■■□□□□□으로 출력
+		char o = '■', x = '□';	
 		
 		//s_Clean(청결 status) 표시
 		System.out.print("\n* 청결    : ");
